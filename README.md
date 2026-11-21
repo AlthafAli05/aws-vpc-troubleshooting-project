@@ -13,8 +13,10 @@ A hands-on AWS project built on the Free plan (no charges). I built a custom net
 - RDS MySQL `db.t3.micro` in private subnets, public access **off**
 - Security groups: `web-sg` (HTTP 80, SSH 22) and `db-sg` (MySQL 3306 only from `web-sg`)
 
-![VPC resource map](docs/images/vpc-resource-map.png)
-![Working web page](docs/images/web-page.png)
+
+## Screenshots
+
+All screenshots (VPC map, working page, and the before/after of each ticket) are in the [`docs/images`](docs/images) folder.
 
 ## Security design
 
@@ -34,8 +36,6 @@ A hands-on AWS project built on the Free plan (no charges). I built a custom net
 | **Fix** | Added an inbound HTTP rule on port 80 from `0.0.0.0/0`. |
 | **Prevention** | Review security group rules after every change. Note: security groups do not cut connections that are already open, so test in a fresh Incognito window. |
 
-![Timeout](docs/images/ticket1-timeout.png)
-![Fixed](docs/images/ticket1-fixed.png)
 
 ### Ticket 2: Website times out (route table)
 
@@ -47,8 +47,6 @@ A hands-on AWS project built on the Free plan (no charges). I built a custom net
 | **Fix** | Added a route: `0.0.0.0/0` to `althaf-ha-app-igw`. |
 | **Prevention** | Check route tables after any network change. |
 
-![Timeout](docs/images/ticket2-timeout.png)
-![Fixed](docs/images/ticket2-fixed.png)
 
 ### Ticket 3: Website times out (network ACL)
 
@@ -60,8 +58,6 @@ A hands-on AWS project built on the Free plan (no charges). I built a custom net
 | **Fix** | Removed the Deny rule. The default Allow rule (100) stayed in place. |
 | **Prevention** | Keep NACLs at the default and track every NACL change. |
 
-![Timeout](docs/images/ticket3-timeout.png)
-![Fixed](docs/images/ticket3-fixed.png)
 
 ## What I learned
 
